@@ -1,4 +1,5 @@
 const User = require('../models/userModels');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const createUser = (req, res) => {
@@ -6,6 +7,7 @@ const createUser = (req, res) => {
   // create user takes in the username and password and saves a user.
   // our pre save hook should kick in here saving this user to the DB with an encrypted password.
   const user = req.body;
+  console.log(user)
   User
     .create(user)
     .then(response => {

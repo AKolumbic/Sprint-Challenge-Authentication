@@ -1,5 +1,4 @@
 const User = require('../models/userModels');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const createUser = (req, res) => {
@@ -11,7 +10,7 @@ const createUser = (req, res) => {
   User
     .create(user)
     .then(response => {
-      res.status(201).json(response);
+      res.status(200).json({ username: response.username });
     })
     .catch(error => {
       res.status(500).json({ message: error.message })
